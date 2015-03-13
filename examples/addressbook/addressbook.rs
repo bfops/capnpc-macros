@@ -45,8 +45,8 @@ pub mod addressbook {
                         [set_email, "alice@example.com"],
                         [init_phones, 1,
                           [
-                            [set_number, "555-1212"],
-                            [set_type, {person::phone_number::Type::Mobile}],
+                              [set_number, "555-1212"],
+                              [set_type, {person::phone_number::Type::Mobile}],
                           ],
                         ],
                         [init_employment, [set_school, "MIT"],],
