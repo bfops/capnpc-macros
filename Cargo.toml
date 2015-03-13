@@ -1,0 +1,39 @@
+[package]
+
+name = "capnpc-macros"
+version = "0.0.0"
+authors = [
+    "Ben Foppa <benjamin.foppa@gmail.com>",
+  ]
+
+# The development profile, used for `cargo build`
+[profile.dev]
+opt-level = 1
+debug = true
+rpath = false
+lto = false
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = false
+
+[profile.bench]
+opt-level = 3
+debug = false
+rpath = false
+lto = false
+
+[profile.test]
+opt-level = 0
+debug = true
+rpath = false
+lto = false
+
+[lib]
+name = "capnpc-macros"
+path = "./src/lib.rs"
+
+[dependencies]
+capnp = "*"
