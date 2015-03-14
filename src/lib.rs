@@ -1,9 +1,9 @@
 #[macro_export]
-macro_rules! capnp_init(
+macro_rules! capnpc_init(
   ($builder:ident [$init:ident => $($subinit: tt)*]) => {{
     let mut _builder = $builder.borrow().$init();
     $(
-      capnp_init!(_builder $subinit);
+      capnpc_init!(_builder $subinit);
     )*
   }};
 
@@ -18,7 +18,7 @@ macro_rules! capnp_init(
       {
         let mut _elem = _builder.borrow().get(_i);
         $(
-          capnp_init!(_elem $subinit);
+          capnpc_init!(_elem $subinit);
         )*
       }
       let _i = _i + 1;
@@ -27,13 +27,13 @@ macro_rules! capnp_init(
 );
 
 #[macro_export]
-macro_rules! capnp_new(
-  ($ty:ty, $($tt:tt)*) => {{
+macro_rules! capnpc_new(
+  ($ty:ty => $($tt:tt)*) => {{
     let mut message = MallocMessageBuilder::new_default();
     {
       let mut message = message.init_root::<$ty>();
       $(
-        capnp_init!(message $tt);
+        capnpc_init!(message $tt);
       )*
     }
     message

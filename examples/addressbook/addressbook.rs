@@ -37,7 +37,8 @@ pub mod addressbook {
 
     pub fn write_address_book() -> ::std::io::Result<()> {
         let mut message =
-            capnp_new!(address_book::Builder,
+            capnpc_new!(
+                address_book::Builder =>
                 [init_people 2 =>
                     [
                         [set_id 123]
